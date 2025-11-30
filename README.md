@@ -4,7 +4,7 @@ Purpose & business problem
 Creators, influencers and media teams need to forecast how much a video will earn (for planning, budgeting and content strategy). This project predicts per-video ad revenue and surfaces the features and optimizations that most affect monetization so stakeholders can make data-driven publishing and content decisions. 
 
 
-Dataset & features (columns)
+#Dataset & features (columns)
 
 The app expects a cleaned dataset of YouTube video analytics. Columns used by the system (explicit in the code) include:
 
@@ -49,7 +49,7 @@ log_ad_revenue (derived: np.log1p(ad_revenue_usd))
 (These column names and engineered fields are directly from the uploaded code.) 
 
 
-Preprocessing & feature engineering (step-by-step)
+# Preprocessing & feature engineering (step-by-step)
 
 This section describes the exact transformation pipeline used when preparing inputs for prediction.
 
@@ -97,7 +97,7 @@ Notes / practical details
 Frequency maps and scaler must be placed where the app expects them or update paths in config. The code contains absolute paths (e.g., D:\Content_Monetization\...) — these should be converted to project-relative paths for portability. 
 
 
-5 — Models used & why they were chosen
+# Models used & why they were chosen
 
 The app loads five pre-trained models from disk:
 
@@ -114,7 +114,7 @@ XGBoost — high-performing gradient boosting model for tabular data.
 The selection covers: a simple linear model, kernel model, tree model, ensemble trees, and gradient boosting — giving a good mix for comparison of bias/variance and interpretability vs performance tradeoffs. 
 
 
-6 — Training details (what the code documents vs what’s missing)
+# Training details (what the code documents vs what’s missing)
 
 What the app documents:
 
@@ -141,7 +141,7 @@ The exact train/test split ratio, random seed, feature selection process, hyperp
 
 Recommendation: If you want the training details captured in the repo, add the training notebook (train.ipynb) that contains code to reproduce model training, CV, hyperparameter search, and model export steps.
 
-7 — How predictions are made (input → preprocessing → model → output)
+# How predictions are made (input → preprocessing → model → output)
 
 User input / uploaded CSV — values for features (views, likes, comments, watch_time_minutes, etc.). The app accepts either user typed inputs in the Streamlit UI or an uploaded CSV (model comparison section). 
 
@@ -175,7 +175,7 @@ Yearly projection (monthly × 12).
 Also displays model metrics and a feature importance bar chart. 
 
 
-8 — Feature importance & interpretation
+# Feature importance & interpretation
 
 The app reports feature importance scores (example values shown in the UI). The key findings:
 
@@ -192,7 +192,7 @@ Prioritize strategies that increase watch time and retention (strong hook, mid-v
 
 Engagement (likes, comments) is helpful, but does not substitute for sustained watch time from the model’s perspective.
 
-9 — Deployment: how the Streamlit app works (routes/pages)
+# Deployment: how the Streamlit app works (routes/pages)
 
 The Streamlit app provides a sidebar navigation and three main pages (routes) implemented in learn1.py:
 
